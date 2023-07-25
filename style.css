@@ -1,0 +1,52 @@
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.bt-on {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 15px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.bt-on:hover {
+    color: white;
+    background-color: black;
+}
+
+.bt-off {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 15px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.bt-off:hover {
+    color: white;
+    background-color: black;
+}
+
+.bulb {
+    align-items: center;
+    margin: 30px;
+}
+
+.btns {
+    text-align: center;
+}
+
+@media (max-width: 590px) {
+    .bulb {
+        width: 350px;
+    }
+    .app {
+        margin-top: 40%;
+    }
+}
