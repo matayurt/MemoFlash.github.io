@@ -1,52 +1,54 @@
-.app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 
-.bt-on {
+.bt {
     background-color: white;
     color: black;
     border: 2px solid black;
-    padding: 15px;
+    padding: 10px;
     transition: 0.3s;
     font-size: 15px;
+    margin-top: 30px;
 }
 
-.bt-on:hover {
+.bt:hover {
     color: white;
     background-color: black;
 }
 
-.bt-off {
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    padding: 15px;
-    transition: 0.3s;
-    font-size: 15px;
-}
-
-.bt-off:hover {
-    color: white;
-    background-color: black;
+.bt:active {
+    box-shadow: 3px 3px 3px grey;
 }
 
 .bulb {
-    align-items: center;
-    margin: 30px;
+    width: 100px;
 }
 
-.btns {
-    text-align: center;
+.list {
+    list-style: none;
+}
+
+.light-pack {
+    display: flex;
+}
+
+.add {
+    font-size: 50px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #4EBC3B;
+    border: 1px solid #4EBC3B;
+    border-radius: 50%;
+}
+
+.add:hover {
+    background-color: #6abc3b;
+}
+
+.add:active {
+    background-color: white;
 }
 
 @media (max-width: 590px) {
-    .bulb {
-        width: 350px;
-    }
-    .app {
-        margin-top: 40%;
-    }
+    
 }
