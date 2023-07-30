@@ -8,46 +8,54 @@ var bt_off_ln = document.querySelectorAll(".bt-off").length;
 var add_bt = document.querySelector(".add");
 var add_me = document.querySelector(".add-me");
 
-const turn_on = () => {
-  bt_on.addEventListener("click", () => {
-    bulb.src = "img/lightbulb.png";
-  });
+var del_bt = document.querySelector(".del");
+var del_bt_ln = document.querySelectorAll(".del").length;
+
+const saveData = () => {
+  localStorage.setItem("data", add_me.innerHTML);
 };
 
-const turn_off = () => {
-  bt_off.addEventListener("click", () => {
-    bulb.src = "img/lamp.png";
-  });
+const getData = () => {
+  add_me.innerHTML = localStorage.getItem("data");
 };
 
-for (i = 0; i < bt_on_ln; i++) {
-  document.querySelectorAll(".bt-on")[i].addEventListener("click", () => {
-    turn_on();
-  });
-}
-
-for (i = 0; i < bt_off_ln; i++) {
-  document.querySelectorAll(".bt-off")[i].addEventListener("click", () => {
-    turn_off();
-  });
-}
-
+//* Yenisini ekler
 add_bt.addEventListener("click", () => {
   let li = document.createElement("li");
   li.innerHTML =
-    '<div class="light-pack"> <img src="img/lamp.png" alt="" class="bulb" /> <div class="btns"> <button class="bt-on bt">TURN ON</button> <button class="bt-off bt">TURN OFF</button></div></div>';
+    '<li class="list"> <div class="light-pack"> <img src="img/lamp.png" alt="" class="bulb" /> <button class="bt-on bt">TURN ON</button> <button class="bt-off bt">TURN OFF</button> <img src="img/458594.png" alt="" class="del" /> </div> </li>';
   li.classList.add("list");
   add_me.appendChild(li);
+
+  saveData();
 });
 
-// var clickEvent = 1;
-// bt_on.addEventListener("click", () => {
-//   clickEvent += 1;
-//   bulb.src = "img/2779262.png";
-//   if (clickEvent == 2) {
-//     bt_on.textContent = "TURN OFF";
-//   }
-//   if (clickEvent == 3) {
-//     bulb.src = "img/118063.png";
-//   }
-// });
+const lightList = document.getElementById("light-list");
+lightList.addEventListener("click", (event) => {
+  const target = event.target;
+  const parentLi = target.closest(".list");
+
+  if (parentLi) {
+    const bulbImg = parentLi.querySelector(".bulb");
+    const isBulbOn = bulbImg.classList.contains("on");
+
+    if (target.classList.contains("bt-on")) {
+      if (!isBulbOn) {
+        bulbImg.classList.add("on");
+        bulbImg.src = "img/lightbulb.png";
+        saveData();
+      }
+    } else if (target.classList.contains("bt-off")) {
+      if (isBulbOn) {
+        bulbImg.classList.remove("on");
+        bulbImg.src = "img/lamp.png";
+        saveData();
+      }
+    } else if (target.classList.contains("del")) {
+      parentLi.remove();
+      saveData(); // <li> elementini komple siler
+    }
+  }
+});
+
+getData();
